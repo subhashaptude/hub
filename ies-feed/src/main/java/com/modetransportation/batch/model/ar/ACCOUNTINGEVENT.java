@@ -54,7 +54,7 @@ import com.modetransportation.batch.util.LocalDateAdapter;
 })
 @XmlRootElement(name = "ACCOUNTING_EVENT")
 @Entity
-@Table(name="AR_EVENT")
+@Table(name="AR_Event")
 public class ACCOUNTINGEVENT {
 
 	@Id
