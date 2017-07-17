@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
 public class PAYLOAD {
 
     @XmlElement(name = "ACCOUNTING_EVENT", required = true)
-    protected List<ACCOUNTINGEVENT> accountingevent;
+    protected List<APEvent> accountingevent;
 
     /**
      * Gets the value of the accountingevent property.
@@ -64,13 +64,13 @@ public class PAYLOAD {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ACCOUNTINGEVENT }
+     * {@link APEvent }
      * 
      * 
      */
-    public List<ACCOUNTINGEVENT> getACCOUNTINGEVENT() {
+    public List<APEvent> getACCOUNTINGEVENT() {
         if (accountingevent == null) {
-            accountingevent = new ArrayList<ACCOUNTINGEVENT>();
+            accountingevent = new ArrayList<APEvent>();
         }
         return this.accountingevent;
     }

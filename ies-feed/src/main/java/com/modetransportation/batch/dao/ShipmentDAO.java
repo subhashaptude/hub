@@ -14,66 +14,68 @@ public class ShipmentDAO {
 
 	public boolean saveShipment(Shipment shipment){
 
-		try{
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		session.save(shipment);
 
+		try{
 
-		for(Party party : shipment.getParties().getParty() ){
-			party.setShipment(shipment);
-			session.save(party);
-		}
-		
-		for(Location location : shipment.getLocations().getLocation() ){
-			location.setShipment(shipment);
-			session.save(location);
-		}
-		
-		for(Reference reference : shipment.getReferences().getReference() ){
-			reference.setShipment(shipment);
-			session.save(reference);
-		}
+			session.save(shipment);
 
-		for(Container container : shipment.getContainers().getContainer() ){
-			container.setShipment(shipment);
-			session.save(container);
-		}
+			for(Party party : shipment.getParties().getParty() ){
+				party.setShipment(shipment);
+				session.save(party);
+			}
 
-		for(Container container : shipment.getContainers().getContainer() ){
-			for(Container.Charges.Charge charge : container.getCharges().getCharge() ){
-				charge.setContainer(container);
+			for(Location location : shipment.getLocations().getLocation() ){
+				location.setShipment(shipment);
+				session.save(location);
+			}
+
+			for(Reference reference : shipment.getReferences().getReference() ){
+				reference.setShipment(shipment);
+				session.save(reference);
+			}
+
+			for(Container container : shipment.getContainers().getContainer() ){
+				container.setShipment(shipment);
+				session.save(container);
+			}
+
+			for(Container container : shipment.getContainers().getContainer() ){
+				for(Container.Charges.Charge charge : container.getCharges().getCharge() ){
+					charge.setContainer(container);
+					session.save(charge);
+				}
+
+				for(Container.Contents.Content content : container.getContents().getContent() ){
+					content.setContainer(container);
+					session.save(content);
+				}
+			}
+
+			for(Charge charge : shipment.getCharges().getCharge() ){
+				charge.setShipment(shipment);
 				session.save(charge);
 			}
-			
-			for(Container.Contents.Content content : container.getContents().getContent() ){
-				content.setContainer(container);
-				session.save(content);
-			}
-		}
-		
-			for(Charge charge : shipment.getCharges().getCharge() ){
-			charge.setShipment(shipment);
-			session.save(charge);
-		}
 
 
-		/*for(Segment segment : shipment.getRouting().getSegment() ){
+			/*for(Segment segment : shipment.getRouting().getSegment() ){
 			segment.setShipment(shipment);
 			session.save(segment);
 		}
-		 */
+			 */
 
-		session.getTransaction().commit();
-		session.close();
-		//HibernateUtil.shutdown();
+			session.getTransaction().commit();
+			session.close();
 
-		return true;
-	
+			return true;
+
 		}catch(Exception ex){
+			System.out.println(ex);
+			session.close();
 			return false;
 		}
 	}
 
-	
+
 }

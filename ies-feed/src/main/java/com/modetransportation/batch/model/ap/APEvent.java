@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -50,8 +51,9 @@ import com.modetransportation.batch.util.LocalDateAdapter;
 })
 @XmlRootElement(name = "ACCOUNTING_EVENT")
 @Entity
-@Table(name="AP_Event")
-public class ACCOUNTINGEVENT {
+@Table(name="AP_Event",  uniqueConstraints={
+@UniqueConstraint(columnNames={"shipmentreference","financialpartyexternalid","chargetypecode", "chargeamount"})})
+public class APEvent {
 
 	@Id
 	@XmlTransient
@@ -110,8 +112,39 @@ public class ACCOUNTINGEVENT {
     protected String typeofmove;
     @XmlElement(name = "CARRIER", required = true)
     protected String carrier;
+    @XmlTransient
+    @Column(name="Void")
+    protected String voided;
+    @XmlTransient
+    protected String reversal;
+    @XmlTransient
+    protected String processed;
+    
+    public String getProcessed() {
+		return processed;
+	}
 
-    /**
+	public void setProcessed(String processed) {
+		this.processed = processed;
+	}
+
+	public String getVoided() {
+		return voided;
+	}
+
+	public void setVoided(String voided) {
+		this.voided = voided;
+	}
+
+	public String getReversal() {
+		return reversal;
+	}
+
+	public void setReversal(String reversal) {
+		this.reversal = reversal;
+	}
+
+	/**
      * Gets the value of the chargetype property.
      * 
      * @return

@@ -76,11 +76,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ACCOUNTINGEVENT }
+     * Create an instance of {@link APEvent }
      * 
      */
-    public ACCOUNTINGEVENT createACCOUNTINGEVENT() {
-        return new ACCOUNTINGEVENT();
+    public APEvent createACCOUNTINGEVENT() {
+        return new APEvent();
     }
 
     /**

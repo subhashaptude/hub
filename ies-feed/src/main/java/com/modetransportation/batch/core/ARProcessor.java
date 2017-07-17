@@ -8,7 +8,7 @@ import com.modetransportation.batch.model.ar.TpDoc;
 public class ARProcessor implements Processsor {
 
 	public void process() {
-		String filePath = "C:/Users/Subhash/workspace/ies-feed/src/main/resources/ar.xml";
+		String filePath = "C:/Users/Subhash/workspace/ies-feed/src/main/resources/OF2017070808001004.AR";
 		JAXBUnmarshaller unmarshaller = new JAXBUnmarshaller();
 		TpDoc ar = (TpDoc) unmarshaller.unmarshall(filePath, TpDoc.class);
 		ARDAO dao = new ARDAO();
