@@ -59,7 +59,6 @@ public class ARDAO {
 		session.beginTransaction();
 		try{
 
-
 			Query query = session.createQuery(hql);
 			query.setParameter("ReferenceNumber", event.getREFERENCENUMBER().substring(0, 10));
 			query.setParameter("FinancialPartyExternalId", event.getFINANCIALPARTYEXTERNALID());

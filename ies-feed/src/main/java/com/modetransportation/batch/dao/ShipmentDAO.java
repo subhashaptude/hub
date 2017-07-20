@@ -12,7 +12,7 @@ import com.modetransportation.batch.util.HibernateUtil;
 
 public class ShipmentDAO {
 
-	public boolean saveShipment(Shipment shipment){
+	public boolean persistShipment(Shipment shipment){
 
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
@@ -31,10 +31,7 @@ public class ShipmentDAO {
 				session.save(location);
 			}
 
-			for(Reference reference : shipment.getReferences().getReference() ){
-				reference.setShipment(shipment);
-				session.save(reference);
-			}
+
 
 			for(Container container : shipment.getContainers().getContainer() ){
 				container.setShipment(shipment);
@@ -42,10 +39,10 @@ public class ShipmentDAO {
 			}
 
 			for(Container container : shipment.getContainers().getContainer() ){
-				for(Container.Charges.Charge charge : container.getCharges().getCharge() ){
+				/*for(Container.Charges.Charge charge : container.getCharges().getCharge() ){
 					charge.setContainer(container);
 					session.save(charge);
-				}
+				}*/
 
 				for(Container.Contents.Content content : container.getContents().getContent() ){
 					content.setContainer(container);
@@ -59,11 +56,17 @@ public class ShipmentDAO {
 			}
 
 
-			/*for(Segment segment : shipment.getRouting().getSegment() ){
-			segment.setShipment(shipment);
-			session.save(segment);
-		}
-			 */
+
+
+			/*for(Reference reference : shipment.getReferences().getReference() ){
+				reference.setShipment(shipment);
+				session.save(reference);
+			}
+			for(Segment segment : shipment.getRouting().getSegment() ){
+				segment.setShipment(shipment);
+				session.save(segment);
+			}*/
+
 
 			session.getTransaction().commit();
 			session.close();

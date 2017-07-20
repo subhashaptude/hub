@@ -17,15 +17,15 @@
 
 		
 		
-		<property name="connection.url">jdbc:sqlserver://localhost;database=ies</property> 
+	<!-- 	<property name="connection.url">jdbc:sqlserver://localhost;database=ies</property> 
 		<property name="connection.username">sa</property> 
-		<property name="connection.password">Welcome3</property> 
+		<property name="connection.password">Welcome3</property>  -->
 		
 		
 		
 		<!-- Database connection setting for cloud server -->
 
-<!-- 		<property name="connection.url">jdbc:sqlserver://aptude.database.windows.net:1433;database=ies;user=aptude@aptude;password=Welcome3;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property> -->
+		<property name="connection.url">jdbc:sqlserver://aptude.database.windows.net:1433;database=ies;user=aptude@aptude;password=Welcome3;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;</property>
 
 		<!-- JDBC connection pool (use the built-in) -->
 		<!-- <property name="connection.pool_size">1</property> -->
@@ -40,7 +40,7 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 
 		<property name="hibernate.c3p0.min_size">1</property>
 		<property name="hibernate.c3p0.max_size">1</property>
@@ -63,6 +63,9 @@
 		<mapping class="com.modetransportation.batch.model.Container$Contents$Content" />
 		<mapping class="com.modetransportation.batch.model.ap.APEvent" />
 		<mapping class="com.modetransportation.batch.model.ar.AREvent" />
+		<mapping class="com.modetransportation.batch.model.Validation" />
+		<mapping class="com.modetransportation.batch.model.InvalidData" />
+	
 
 	</session-factory>
 

@@ -2,10 +2,12 @@ package com.modetransportation.batch.model;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,11 +22,15 @@ import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.datatype.XMLGregorianCalendar;
+
 import org.joda.time.LocalDate;
+
 import com.modetransportation.batch.model.Shipment.Charges.Charge;
 import com.modetransportation.batch.model.Shipment.Contents.Content;
 import com.modetransportation.batch.model.Shipment.Routing.Segment;
 import com.modetransportation.batch.util.LocalDateAdapter;
+import com.modetransportation.batch.util.ZonedDateTimeXmlAdapter;
 
 
 
@@ -35,7 +41,7 @@ public class Shipment {
 	@Column(name = "TransactionId")
 	protected String transactionId;
 	@Column(name = "TransactionDateTime")
-	protected LocalDate transactionDateTime;
+	protected ZonedDateTime transactionDateTime;
 	@Column(name = "TransactionSetPurpose")
 	protected String transactionSetPurpose;
 	@Column(name = "TransactionType")
@@ -138,7 +144,17 @@ public class Shipment {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "shipment")
 	private Set<Reference> referenceSet = new HashSet<Reference>(0);
 	
+	@Column(name = "ValidationFailed")
+	protected String validationFailed;
 	
+	public String getValidationFailed() {
+		return validationFailed;
+	}
+
+	public void setValidationFailed(String validationFailed) {
+		this.validationFailed = validationFailed;
+	}
+
 	public Set<Reference> getReferenceSet() {
 		return referenceSet;
 	}
@@ -229,8 +245,8 @@ public class Shipment {
 	 *     
 	 */
 	@XmlElement(name = "TransactionDateTime", required = true)
-	@XmlJavaTypeAdapter(type = LocalDate.class, value = LocalDateAdapter.class)
-	public LocalDate getTransactionDateTime() {
+	@XmlJavaTypeAdapter(type = ZonedDateTime.class, value = ZonedDateTimeXmlAdapter.class)
+	public ZonedDateTime getTransactionDateTime() {
 		return transactionDateTime;
 	}
 
@@ -242,7 +258,7 @@ public class Shipment {
 	 *     {@link XMLGregorianCalendar }
 	 *     
 	 */
-	public void setTransactionDateTime(LocalDate value) {
+	public void setTransactionDateTime(ZonedDateTime value) {
 		this.transactionDateTime = value;
 	}
 

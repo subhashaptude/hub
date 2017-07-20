@@ -16,6 +16,8 @@ public class App
 		a.processShipment();
 		a.processAP();
 		a.processAR();
+
+
 		System.out.println( "Done!" );
 		HibernateUtil.shutdown();
 	}

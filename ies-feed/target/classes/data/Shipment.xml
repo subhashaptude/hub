@@ -12,12 +12,12 @@
 <BookingNumber>MULTI</BookingNumber>
 <OriginReference>SDE-THIAA-59</OriginReference>
 <CustomerReference>1611819,SW1F11182,SZDAL1611066</CustomerReference>
-<TransportationMethod>Ocean Import</TransportationMethod>
+<TransportationMethod></TransportationMethod>
 <TypeOfMove>FCL</TypeOfMove>
 <VesselName>MAERSK EDMONTON</VesselName>
 <VoyageFlightNumber>648N</VoyageFlightNumber>
 <DepartureDateTime>2017-03-05T00:00:00</DepartureDateTime>
-<ArrivalDateTime>2017-03-15T00:00:00</ArrivalDateTime>
+<ArrivalDateTime></ArrivalDateTime>
 <DeliveryDateTime>2017-03-31T00:00:00</DeliveryDateTime>
 <References>
 <Reference>
@@ -92,7 +92,7 @@
 <PartyType>Consignee</PartyType>
 <PartyCode>933334</PartyCode>
 <Name>AT HOME</Name>
-<Address1>1600 EAST PLANO PARKWAY</Address1>
+<Address1></Address1>
 <CityName>PLANO</CityName>
 <StateOrProvinceCode>TX</StateOrProvinceCode>
 <PostalCode>750748124</PostalCode>
@@ -100,7 +100,7 @@
 </Party>
 <Party>
 <PartyType>Notify</PartyType>
-<PartyCode>THEIND</PartyCode>
+<PartyCode></PartyCode>
 <Name>THE INDIA CONNECTION</Name>
 <Address1>63 1ST FLOOR UDHYOG VIHAR PH I ,</Address1>
 <Address2>G ON - 122016</Address2>
